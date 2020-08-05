@@ -56,5 +56,3 @@ def book_list(request):
                 request.user.librarian.id, form_data["location"]))
 
         return redirect(reverse('libraryapp:books'))
-
-        return render(request, template, context)
