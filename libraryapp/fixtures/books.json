@@ -1,0 +1,74 @@
+[
+  {
+    "model": "libraryapp.book",
+    "pk": 1,
+    "fields": {
+      "title": "Taiko",
+      "isbn_num":  "04275747474873",
+      "author":  "Eiji Yoshikawa",
+      "year_published": 2001,
+      "location_id": 1,
+      "librarian_id": 1
+    }
+  },
+  {
+    "model": "libraryapp.book",
+    "pk": 2,
+    "fields": {
+      "title": "Lamb",
+      "isbn_num":  "59359409490",
+      "author":  "Christopher Moore",
+      "year_published": 2004,
+      "location_id":  1,
+      "librarian_id": 1
+    }
+  },
+  {
+    "model": "libraryapp.book",
+    "pk": 3,
+    "fields": {
+      "title": "The Golem and the Jinni",
+      "isbn_num": "8592475822",
+      "author": "Helene Wecker",
+      "year_published": 2013,
+      "location_id": 1,
+      "librarian_id": 1
+    }
+  },
+  {
+    "model": "libraryapp.book",
+    "pk": 4,
+    "fields": {
+      "title": "Cooking With Concrete",
+      "isbn_num": "04375847474873",
+      "author": "Randy Rouge",
+      "year_published": 1999,
+      "location_id":  1,
+      "librarian_id": 1
+    }
+  },
+  {
+    "model": "libraryapp.book",
+    "pk": 5,
+    "fields": {
+      "title": "Take the Pinheads Bowling",
+      "isbn_num": "042755467474873",
+      "author": "Darby Funderbunk",
+      "year_published": 1982,
+      "location_id":  1,
+      "librarian_id": 1
+    }
+  },
+  {
+    "model": "libraryapp.book",
+    "pk": 5,
+    "fields": {
+      "title": "To Kill A Mockingbird",
+      "isbn_num": "075845698723451",
+      "author": "Harper Lee",
+      "year_published": 1960,
+      "location_id":  1,
+      "librarian_id": 2
+    }
+  }
+]
