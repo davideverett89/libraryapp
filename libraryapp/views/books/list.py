@@ -20,11 +20,8 @@ def book_list(request):
                 b.year_published,
                 b.isbn_num,
                 b.location_id,
-                b.librarian_id,
-                l.name library
-            from libraryapp_book b
-            join libraryapp_library l 
-            on b.location_id = l.id;
+                b.librarian_id
+            from libraryapp_book b;
             """)
             
             all_books = db_cursor.fetchall()
