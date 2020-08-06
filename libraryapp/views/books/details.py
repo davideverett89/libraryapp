@@ -5,27 +5,7 @@ from django.contrib.auth.decorators import login_required
 from libraryapp.models import Book, Library
 from libraryapp.models import model_factory
 from ..connection import Connection
-
-
-def get_book(book_id):
-    with sqlite3.connect(Connection.db_path) as conn:
-        conn.row_factory = model_factory(Book)
-        db_cursor = conn.cursor()
-
-        db_cursor.execute("""
-        SELECT
-            b.id,
-            b.title,
-            b.author,
-            b.year_published,
-            b.isbn_num,
-            b.librarian_id,
-            b.location_id
-        FROM libraryapp_book b
-        WHERE b.id = ?
-        """, (book_id,))
-
-        return db_cursor.fetchone()
+from ..helpers.get_book import get_book
 
 @login_required
 def book_details(request, book_id):
@@ -41,6 +21,30 @@ def book_details(request, book_id):
 
     if request.method == 'POST':
         form_data = request.POST
+
+        if (
+            "actual_method" in form_data
+            and form_data["actual_method"] == "PUT"
+        ):
+            with sqlite3.connect(Connection.db_path) as conn:
+                db_cursor = conn.cursor()
+
+                db_cursor.execute("""
+                UPDATE libraryapp_book
+                SET title = ?,
+                    author = ?,
+                    isbn_num = ?,
+                    year_published = ?,
+                    location_id = ?
+                WHERE id = ?
+                """,
+                (
+                    form_data['title'], form_data['author'],
+                    form_data['isbn'], form_data['year_published'],
+                    form_data["location"], book_id,
+                ))
+
+            return redirect(reverse('libraryapp:books'))
 
         if (
             "actual_method" in form_data
